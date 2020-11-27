@@ -4,6 +4,7 @@ const API_KEY = '00c2d56408907405dc1302cb38d24592';
 document.addEventListener('DOMContentLoaded',  () => {
     renderNewsMovies();
     renderPopularMovie();
+    renderTopRatedMovie();
 })
 
 const getNewsMovie = () => {
@@ -57,18 +58,48 @@ const renderPopularMovie = async () => {
     let html = '';
     movies.forEach((movie,index) => {
         const {id, title, poster_path } = movie;
-        const titleImage = 'https://image.tmdb.org/t/p/original' + poster_path;
-        const urlMovie = `  ../movie.html?id=${id}`
+        const titleImage = 'https://image.tmdb.org/t/p/w500' + poster_path;
+        const urlMovie = `../movie.html?id=${id}`
         if(index < 5){
             html += `
                 <li class="list-group-item">
                     <img src="${titleImage}" alt="${title}">
                     <h3>${title}</h3>
-                    <a href="${urlMovie}" class="btn btn-primary">Ver Más</a>
+                    <a href="${urlMovie}" class="btn btn-outline-primary">Ver Más</a>
                 </li>
             `
         }
     });
 
     document.getElementsByClassName('now-playing__list')[0].innerHTML = html;
+}
+
+
+const getTopRatedMovies = () => {
+    const url = `${URL_PATH}/3/movie/top_rated?api_key=${API_KEY}&language=es-ES&page=1`;
+    return fetch(url)
+        .then(resp => resp.json())
+        .then(result => result.results)
+        .catch(e => console.log(e));
+}
+
+const renderTopRatedMovie = async () => {
+    const movies = await getTopRatedMovies();
+    let html = '';
+    movies.forEach((movie,index) => {
+        const {id, title, poster_path } = movie;
+        const titleImage = 'https://image.tmdb.org/t/p/w500' + poster_path;
+        const urlMovie = `../movie.html?id=${id}`
+        if(index < 5){
+            html += `
+                <li class="list-group-item">
+                    <img src="${titleImage}" alt="${title}">
+                    <h3>${title}</h3>
+                    <a href="${urlMovie}" class="btn btn-outline-primary">Ver Más</a>
+                </li>
+            `
+        }
+    });
+
+    document.getElementsByClassName('top-rated-playing__list')[0].innerHTML = html;
 }
