@@ -15,8 +15,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\janas\Documents\ROYECTOS\Proyectos\JS\TMDb-JS\img" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\janas\Documents\ROYECTOS\Proyectos\JS\TMDb-JS\img" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -27,7 +36,7 @@
       <option name="presentableId" value="Default" />
       <updated>1606379957407</updated>
       <workItem from="1606379964729" duration="1997000" />
-      <workItem from="1606459186375" duration="921000" />
+      <workItem from="1606459186375" duration="7050000" />
     </task>
     <servers />
   </component>

@@ -9,4 +9,7 @@
 * Se creará peticiones HTTP con un Fetch para consumir datos de APIs externas.
 * Se usará localStorage
 * Se usarán Cookies como crear, modificar y borrar cookies en el navegador del cliente.
+* Carousel Bootstrap con 20 películas nuevas
+* En la home 5 películas populares
+
 
