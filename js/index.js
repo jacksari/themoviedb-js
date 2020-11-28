@@ -3,19 +3,20 @@ const API_KEY = '00c2d56408907405dc1302cb38d24592';
 
 document.addEventListener('DOMContentLoaded',  () => {
     renderNewsMovies();
-    renderPopularMovie();
-    renderTopRatedMovie();
+    renderMoviesHome('popular','now-playing');
+    renderMoviesHome('top_rated','top-rated-playing');
 })
 
-const getNewsMovie = () => {
-    const url = `${URL_PATH}/3/movie/now_playing?api_key=${API_KEY}&language=es-ES&page=1`
-    return  fetch(url).then(resp => resp.json())
+const getMovies = (url) => {
+    const URL = `${URL_PATH}/3/movie/${url}?api_key=${API_KEY}&language=es-ES&page=1`
+    return fetch(URL)
+        .then(resp => resp.json())
         .then(result => result.results)
-        .catch(e => console.log(e))
+        .catch(e => console.log(e));
 }
 
 const renderNewsMovies = async () => {
-    const movies = await getNewsMovie();
+    const movies = await getMovies('now_playing');
     let html = '';
     movies.forEach((movie, index) => {
         const {id, title, overview, backdrop_path} = movie;
@@ -25,7 +26,7 @@ const renderNewsMovies = async () => {
             <div class="carousel-item ${index === 0 ? 'active': null}" style="background-image: url('${titleImage}')">
                 <div class="carousel-caption">
                     <h5>${title}</h5>
-                    <p>${overview}</p>
+                    <p class="">${overview}</p>
                     <a href="${urlMovie}" class="btn btn-primary">Más información</a>
                 </div>
             </div>
@@ -41,20 +42,11 @@ const renderNewsMovies = async () => {
             <span class="sr-only">Next</span>
         </a>
     `
-
     document.getElementsByClassName('list-new-movies')[0].innerHTML = html;
 }
 
-const getPopularMovies = () => {
-    const url = `${URL_PATH}/3/movie/popular?api_key=${API_KEY}&language=es-ES&page=1`;
-    return fetch(url)
-        .then(resp => resp.json())
-        .then(result => result.results)
-        .catch(e => console.log(e));
-}
-
-const renderPopularMovie = async () => {
-    const movies = await getPopularMovies();
+const renderMoviesHome = async (url, clase) =>{
+    const movies = await getMovies(url);
     let html = '';
     movies.forEach((movie,index) => {
         const {id, title, poster_path } = movie;
@@ -63,43 +55,12 @@ const renderPopularMovie = async () => {
         if(index < 5){
             html += `
                 <li class="list-group-item">
-                    <img src="${titleImage}" alt="${title}">
+                    <div class="imagen-home"><img src="${titleImage}" alt="${title}"></div>
                     <h3>${title}</h3>
                     <a href="${urlMovie}" class="btn btn-outline-primary">Ver Más</a>
                 </li>
             `
         }
     });
-
-    document.getElementsByClassName('now-playing__list')[0].innerHTML = html;
-}
-
-
-const getTopRatedMovies = () => {
-    const url = `${URL_PATH}/3/movie/top_rated?api_key=${API_KEY}&language=es-ES&page=1`;
-    return fetch(url)
-        .then(resp => resp.json())
-        .then(result => result.results)
-        .catch(e => console.log(e));
-}
-
-const renderTopRatedMovie = async () => {
-    const movies = await getTopRatedMovies();
-    let html = '';
-    movies.forEach((movie,index) => {
-        const {id, title, poster_path } = movie;
-        const titleImage = 'https://image.tmdb.org/t/p/w500' + poster_path;
-        const urlMovie = `../movie.html?id=${id}`
-        if(index < 5){
-            html += `
-                <li class="list-group-item">
-                    <img src="${titleImage}" alt="${title}">
-                    <h3>${title}</h3>
-                    <a href="${urlMovie}" class="btn btn-outline-primary">Ver Más</a>
-                </li>
-            `
-        }
-    });
-
-    document.getElementsByClassName('top-rated-playing__list')[0].innerHTML = html;
+    document.getElementsByClassName(`${clase}__list`)[0].innerHTML = html;
 }

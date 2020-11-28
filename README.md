@@ -12,4 +12,3 @@
 * Carousel Bootstrap con 20 películas nuevas
 * En la home 5 películas populares
 
-

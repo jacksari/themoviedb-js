@@ -31,12 +31,31 @@
     justify-content: space-between;
 }
 #home .now-playing__list li h3,
-#home .now-playing__list li h3{
+#home .top-rated-playing__list li h3{
     margin: 0;
     font-size: 16px;
 }
 #home .now-playing__list img,
 #home .top-rated-playing__list img{
+    width: 60px;
+}
+
+#home .now-playing__list .imagen-home,
+#home .top-rated-playing__list .imagen-home{
     height: 60px;
-    border-radius: 50%;
+    width: 60px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home .footer-copyright{
+    background: #505f93;
+}
+
+#home .page-footer a{
+    text-decoration: none;
+    color: white;
 }

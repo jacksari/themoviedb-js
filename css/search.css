@@ -1,0 +1,40 @@
+#search{
+    height: 100vh;
+}
+#search #search-movie {
+    margin-bottom: 40px;
+}
+#search .custom-card{
+    padding: 10px;
+
+
+}
+#search .custom-card .card-imagen{
+    height: 200px !important;
+    position: relative;
+    left: 15px;
+
+}
+#search .custom-card .card-card-text{
+    position: relative;
+    left: 5px;
+}
+#search .custom-card .card-search .card-card{
+
+    border-radius: 15px;
+    overflow: hidden;
+
+}
+
+#search .footer-copyright{
+    background: #505f93;
+}
+
+#search .page-footer a{
+    text-decoration: none;
+    color: white;
+}
+
+#search .caption{
+    min-height: 50%!important
+}
